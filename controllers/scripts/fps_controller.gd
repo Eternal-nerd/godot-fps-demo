@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var SPEED : float = 8.0
 @export var JUMP_VELOCITY : float = 9.5
-@export var JUMP_COUNT : int = 1
+@export var JUMP_COUNT : int = 5	#Known Bug: Modifying the jump count anywhere other than this line of code will not work
 @export var DASH_SPEED : float = 16.0
 @export var MOUSE_SENSITIVITY : float = 0.5
 @export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
@@ -15,6 +15,7 @@ var _tilt_input : float
 var _mouse_rotation : Vector3
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
+var current_jump_count = JUMP_COUNT
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -53,7 +54,6 @@ func _ready():
 
 	# Get mouse input
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 func _physics_process(delta):
 	
 	# Update camera movement based on mouse movement
@@ -65,7 +65,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
-	var current_jump_count = 5
+	if is_on_floor():
+		current_jump_count = JUMP_COUNT
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and current_jump_count > 0:
 		velocity.y = JUMP_VELOCITY

@@ -16,7 +16,6 @@ height = 4.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
 script = ExtResource("1_pgc1p")
-JUMP_COUNT = 5
 CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
