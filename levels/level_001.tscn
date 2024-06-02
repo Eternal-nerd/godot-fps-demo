@@ -139,8 +139,6 @@ skeleton = NodePath("../Box")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_j6kcl")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]
-
 [node name="BigBox" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.379, 3.54812, -18.396)
 mesh = SubResource("BoxMesh_eodf4")
@@ -171,3 +169,5 @@ skeleton = NodePath("../Box")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vp4dy")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]

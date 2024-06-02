@@ -65,9 +65,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
-	var current_jump_count = 0
-	if is_on_floor():
-		current_jump_count = JUMP_COUNT
+	var current_jump_count = 5
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and current_jump_count > 0:
 		velocity.y = JUMP_VELOCITY
