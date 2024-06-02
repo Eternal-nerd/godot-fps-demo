@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1yleqbb8tc7x"]
+[gd_scene load_steps=17 format=3 uid="uid://b1yleqbb8tc7x"]
 
 [ext_resource type="PackedScene" uid="uid://btv0a42cgxt8g" path="res://levels/WE_test.tscn" id="1_db21n"]
 [ext_resource type="Material" uid="uid://cn1gsy15bkaff" path="res://materials/grid.tres" id="2_x5xie"]
 [ext_resource type="Material" uid="uid://b4hket5jx2eio" path="res://materials/box_mesh.tres" id="3_51piu"]
+[ext_resource type="Script" path="res://levels/Floor.gd" id="3_o3028"]
 [ext_resource type="Texture2D" uid="uid://ivvpsi314b34" path="res://textures/grid.jpg" id="3_yfwkt"]
 [ext_resource type="PackedScene" uid="uid://c3ffql15mo0aj" path="res://controllers/fps_controller.tscn" id="4_liofc"]
 
@@ -107,6 +108,10 @@ data = PackedVector3Array(-4, 1, 1, 4, -1, 1, -4, -1, 1, -4, 1, -1, -4, -1, -1, 
 material = ExtResource("3_51piu")
 size = Vector3(8, 8, 8)
 
+[sub_resource type="LabelSettings" id="LabelSettings_8db3l"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_db21n")]
@@ -114,6 +119,7 @@ size = Vector3(8, 8, 8)
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -3, 0)
 mesh = SubResource("BoxMesh_gd0ev")
+script = ExtResource("3_o3028")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
@@ -171,3 +177,11 @@ skeleton = NodePath("../Box")
 shape = SubResource("ConcavePolygonShape3D_vp4dy")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_liofc")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 62.0
+text = "Press R to rotate"
+label_settings = SubResource("LabelSettings_8db3l")
